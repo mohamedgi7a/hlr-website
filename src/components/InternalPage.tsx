@@ -56,17 +56,20 @@ const pageMeta = {
   }
 } as const;
 
-function InnerHero({ locale, title, description, parent }: { locale: Locale; title: string; description: string; parent?: string }) {
+function InnerHero({ locale, title, description, parent, image }: { locale: Locale; title: string; description: string; parent?: string; image?: string }) {
   const ar = locale === "ar";
   return (
     <section className="inner-hero">
-      <div className="container">
-        <nav className="breadcrumbs" aria-label={ar ? "مسار الصفحة" : "Breadcrumb"}>
-          <Link href={localizedPath(locale)}>{ar ? "الرئيسية" : "Home"}</Link><span>/</span>
-          {parent ? <><Link href={localizedPath(locale, "/services")}>{ar ? "الخدمات" : "Services"}</Link><span>/</span></> : null}
-          <span>{title}</span>
-        </nav>
-        <h1>{title}</h1><p>{description}</p>
+      <div className="container inner-hero__grid">
+        <div className="inner-hero__content">
+          <nav className="breadcrumbs" aria-label={ar ? "مسار الصفحة" : "Breadcrumb"}>
+            <Link href={localizedPath(locale)}>{ar ? "الرئيسية" : "Home"}</Link><span>/</span>
+            {parent ? <><Link href={localizedPath(locale, "/services")}>{ar ? "الخدمات" : "Services"}</Link><span>/</span></> : null}
+            <span>{title}</span>
+          </nav>
+          <h1>{title}</h1><p>{description}</p>
+        </div>
+        {image ? <div className="inner-hero__visual"><Image src={image} alt="" fill priority sizes="(max-width: 760px) 100vw, 36vw" /><span aria-hidden="true" /></div> : null}
       </div>
     </section>
   );
@@ -80,7 +83,7 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
     const service = services.find((item) => item.slug === serviceSlug)!;
     return (
       <main id="main-content">
-        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} />
+        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} image="/images/hero-saudi-workforce.webp" />
         <section className="section">
           <div className="container content-grid">
             <aside className="content-aside">
@@ -109,9 +112,20 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
   if (kind === "service") return null;
 
   const [title, description] = pageMeta[kind][locale];
+  const pageImages: Record<Exclude<PageKind, "service">, string> = {
+    about: "/images/story-saudi-workforce.webp",
+    services: "/images/hero-saudi-workforce.webp",
+    sectors: "/images/sector-government-saudi.webp",
+    process: "/images/strategy-saudi-team.webp",
+    partners: "/images/strategy-saudi-team.webp",
+    contact: "/images/hero-team.jpg",
+    "request-consultation": "/images/hero-saudi-workforce.webp",
+    privacy: "/images/strategy-saudi-team.webp",
+    terms: "/images/strategy-saudi-team.webp"
+  };
   return (
     <main id="main-content">
-      <InnerHero locale={locale} title={title} description={description} />
+      <InnerHero locale={locale} title={title} description={description} image={pageImages[kind]} />
       {kind === "about" ? <AboutContent locale={locale} /> : null}
       {kind === "services" ? <ServicesContent locale={locale} /> : null}
       {kind === "sectors" ? <SectorsContent locale={locale} /> : null}

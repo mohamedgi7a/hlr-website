@@ -20,16 +20,42 @@ import {
   sectors,
   services,
   story,
-  successStrategies,
   t,
   trustPoints,
-  values,
-  whyItems
+  whyItems,
+  type IconName
 } from "@/data/content";
 import { localizedPath, type Locale } from "@/lib/i18n";
 import { Icon } from "./Icon";
 import { PuzzleReveal } from "./PuzzleReveal";
 import { SectionHeading } from "./SectionHeading";
+
+const workforceAreas: Array<{
+  icon: IconName;
+  title: { ar: string; en: string };
+  roles: { ar: string; en: string };
+}> = [
+  {
+    icon: "factory",
+    title: { ar: "التشغيل والمستودعات", en: "Operations & Warehousing" },
+    roles: { ar: "عمال تشغيل، تعبئة وتغليف، تحميل وتنزيل، ومشرفو مواقع.", en: "Operations crews, packing, loading, and site supervisors." }
+  },
+  {
+    icon: "hospitality",
+    title: { ar: "المطاعم والضيافة", en: "Hospitality & F&B" },
+    roles: { ar: "باريستا، مقدمو خدمة، طهاة، وفرق دعم وتشغيل.", en: "Baristas, service staff, kitchen teams, and support crews." }
+  },
+  {
+    icon: "building",
+    title: { ar: "المرافق والخدمات", en: "Facilities & Support" },
+    roles: { ar: "نظافة، استقبال، دعم إداري، وخدمات تشغيلية مساندة.", en: "Cleaning, reception, administration, and operational support." }
+  },
+  {
+    icon: "briefcase",
+    title: { ar: "الكفاءات المهنية", en: "Professional Talent" },
+    roles: { ar: "موارد بشرية، محاسبة، مبيعات، تقنية، وإدارة أعمال.", en: "HR, finance, sales, technology, and business administration." }
+  }
+];
 
 export function HomePage({ locale }: { locale: Locale }) {
   const ar = locale === "ar";
@@ -51,7 +77,7 @@ export function HomePage({ locale }: { locale: Locale }) {
     const scope = heroRef.current;
     if (!scope) return;
     const ctx = gsap.context(() => {
-      const timeline = gsap.timeline({ delay: 3.07, defaults: { ease: "power4.out" } });
+      const timeline = gsap.timeline({ delay: 1.92, defaults: { ease: "power4.out" } });
       timeline
         .from(".hero-live .hero-eyebrow", { opacity: 0, y: 12, duration: 0.5 })
         .from(".hero-live .hero-title__fixed", { opacity: 0, y: 28, filter: "blur(8px)", duration: 0.72 }, "-=0.25")
@@ -195,8 +221,27 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section why-section" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section workforce-focus-section">
+        <div className="container">
+          <SectionHeading
+            eyebrow={ar ? "قوى عاملة لكل احتياج" : "Workforce for every need"}
+            title={ar ? "نوفر الفرق التي تحافظ على استمرارية تشغيلك." : "Teams that keep your operation moving."}
+            text={ar ? "من العمالة التشغيلية إلى الكفاءات المهنية، نحدد التخصص والعدد ونبني فريقًا يلائم طبيعة منشأتك." : "From operational workers to professional talent, we define the roles, scale, and team structure around your business."}
+            action={<Link className="section-link" href={localizedPath(locale, "/services/workforce-supply")}>{ar ? "اطلب فريقك" : "Build your team"}<Arrow size={17} /></Link>}
+          />
+          <div className="workforce-focus-grid" data-reveal>
+            {workforceAreas.map((area, index) => (
+              <article className={index === 0 ? "workforce-focus-card workforce-focus-card--featured" : "workforce-focus-card"} key={area.title.en}>
+                <div><span>{String(index + 1).padStart(2, "0")}</span><Icon name={area.icon} size={26} /></div>
+                <h3>{t(area.title, locale)}</h3>
+                <p>{t(area.roles, locale)}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section why-section">
         <div className="container">
           <SectionHeading eyebrow={copy.whyEyebrow} title={copy.whyTitle} text={copy.whyText} />
           <div className="why-grid" data-reveal>
@@ -210,8 +255,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section services-section" id="services" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section services-section" id="services">
         <div className="container">
           <SectionHeading eyebrow={copy.servicesEyebrow} title={copy.servicesTitle} action={<Link className="section-link" href={localizedPath(locale, "/services")}>{ar ? "جميع الخدمات" : "All services"}<Arrow size={17} /></Link>} />
           <div className="services-track" data-reveal>
@@ -231,8 +275,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section story-section" ref={storyRef} data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section story-section" ref={storyRef}>
         <div className="container">
           <SectionHeading
             eyebrow={copy.storyEyebrow}
@@ -262,8 +305,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section sectors-section" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section sectors-section">
         <div className="container">
           <SectionHeading eyebrow={copy.sectorsEyebrow} title={copy.sectorsTitle} text={copy.sectorsText} action={<Link className="section-link" href={localizedPath(locale, "/sectors")}>{ar ? "استكشف القطاعات" : "Explore sectors"}<Arrow size={17} /></Link>} />
           <div className="sector-grid" data-reveal>
@@ -278,8 +320,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section process-section" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section process-section">
         <div className="container">
           <SectionHeading light eyebrow={copy.processEyebrow} title={copy.processTitle} text={copy.processText} />
           <div className="process-timeline" data-reveal>
@@ -296,46 +337,23 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section values-section" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section home-partners-section">
         <div className="container">
-          <SectionHeading eyebrow={copy.valuesEyebrow} title={copy.valuesTitle} />
-          <div className="values-showcase" data-reveal>
-            <div className="values-brand-panel">
-              <span>{ar ? "قيم تصنع الفرق" : "Values that make a difference"}</span>
-              <Image src="/brand/hlr-logo.webp" alt="HLR" width={150} height={100} />
-              <p>{ar ? "نحوّل مبادئنا إلى تجربة واضحة في كل مرحلة من الشراكة." : "We turn our principles into a clear experience at every stage of the partnership."}</p>
-            </div>
-            <div className="values-grid">
-              {values.map((value, index) => (
-                <article key={value.title.en}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{t(value.title, locale)}</h3>
-                  <p>{t(value.description, locale)}</p>
-                </article>
-              ))}
+          <SectionHeading
+            eyebrow={ar ? "شركاء النجاح" : "Success Partners"}
+            title={ar ? "ثقة جهات رائدة نعتز بها." : "Trusted by leading organizations."}
+            text={ar ? "شراكات متنوعة تعكس قدرتنا على فهم احتياجات القطاعات المختلفة وتقديم حلول بشرية مناسبة لها." : "Diverse partnerships that reflect our ability to understand different sectors and deliver the right workforce solutions."}
+            action={<Link className="section-link" href={localizedPath(locale, "/partners")}>{ar ? "عرض جميع الشركاء" : "View all partners"}<Arrow size={17} /></Link>}
+          />
+          <div className="home-partners-panel" data-reveal>
+            <div className="partners-board-crop">
+              <Image className="partners-board-image" src="/partners/partners-board.png" alt={ar ? "شعارات شركاء نجاح HLR" : "HLR success partner logos"} width={608} height={730} sizes="(max-width: 760px) calc(100vw - 58px), 820px" />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section success-section" data-puzzle-section>
-        <PuzzleReveal />
-        <div className="container">
-          <SectionHeading eyebrow={copy.successEyebrow} title={copy.successTitle} />
-          <div className="success-grid" data-reveal>
-            {successStrategies.map((item, index) => (
-              <article key={item.title.en} className={index === 0 ? "success-card--large" : ""}>
-                {index === 0 ? <div className="success-image"><Image src="/images/strategy-saudi-team.webp" alt={t(item.title, locale)} fill sizes="(max-width: 800px) 100vw, 54vw" /></div> : null}
-                <div><span>{String(index + 1).padStart(2, "0")}</span><h3>{t(item.title, locale)}</h3><p>{t(item.text, locale)}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section faq-section" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="section faq-section">
         <div className="container faq-layout">
           <SectionHeading eyebrow={copy.faqEyebrow} title={copy.faqTitle} />
           <div className="faq-list" data-reveal>
@@ -349,8 +367,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="final-cta" data-puzzle-section>
-        <PuzzleReveal />
+      <section className="final-cta">
         <div className="container final-cta__inner" data-reveal>
           <div><span>{ar ? "خطوتك التالية" : "Your next step"}</span><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><small>{copy.trust}</small></div>
           <div className="final-cta__actions">

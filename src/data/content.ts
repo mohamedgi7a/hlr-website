@@ -37,22 +37,22 @@ export const navigation = [
 ] as const;
 
 export const hero = {
-  eyebrow: { ar: "توريد عمالة احترافية... ندعم الأعمال", en: "Professional Workforce Supply. Business Support." },
-  fixed: { ar: "نمكّن أعمالك", en: "Empower your business" },
+  eyebrow: { ar: "حلول توريد وتشغيل القوى العاملة في المملكة", en: "Workforce supply and operations across Saudi Arabia" },
+  fixed: { ar: "نوفر لك", en: "We provide" },
   lines: [
-    { ar: "بعمالة تلائم احتياجك", en: "With workforce built for your needs" },
-    { ar: "بأفضل الكفاءات البشرية", en: "With the right human talent" },
-    { ar: "بحلول موارد بشرية أكثر مرونة", en: "With flexible HR solutions" },
-    { ar: "بشراكة تدعم نموك", en: "With a partner that supports growth" }
+    { ar: "العمالة المناسبة لاحتياجك", en: "the right workforce for your needs" },
+    { ar: "فرقًا جاهزة تدعم تشغيلك", en: "teams ready to support operations" },
+    { ar: "كفاءات متخصصة لكل قطاع", en: "specialized talent for every sector" },
+    { ar: "حلولًا مرنة تنمو مع أعمالك", en: "flexible solutions that grow with you" }
   ],
   paragraph: {
-    ar: "نورّد العمالة والكفاءات المناسبة لمنشأتك، وندير رحلة الاستقطاب والتوظيف والمتابعة بحلول مرنة تلائم مختلف القطاعات في المملكة.",
-    en: "We supply the right workforce for your organization and manage sourcing, recruitment, and follow-up through flexible solutions tailored to sectors across Saudi Arabia."
+    ar: "نحدد احتياج منشأتك، نوفر الكفاءات المناسبة، ونتابع جودة الأداء بعد بدء العمل؛ من فريق واحد إلى حلول تشغيل متكاملة لمختلف القطاعات.",
+    en: "We define your needs, supply the right people, and follow performance after deployment—from a single team to integrated workforce operations."
   },
   primary: { ar: "اطلب استشارة", en: "Request a Consultation" },
   secondary: { ar: "استكشف خدماتنا", en: "Explore Our Services" },
-  cardTitle: { ar: "توريد كفاءات مختارة بعناية", en: "Carefully selected workforce" },
-  cardText: { ar: "فرق جاهزة تناسب احتياج منشأتك", en: "Teams ready for your business needs" },
+  cardTitle: { ar: "فرق مختارة وجاهزة للتشغيل", en: "Selected, deployment-ready teams" },
+  cardText: { ar: "اختيار، توريد، ومتابعة مستمرة", en: "Select, supply, and continuously support" },
   imageAlt: {
     ar: "مشرف سعودي مع فريق عمالة محترف يحمل هوية شركة HLR",
     en: "A Saudi supervisor with a professional HLR-branded workforce"

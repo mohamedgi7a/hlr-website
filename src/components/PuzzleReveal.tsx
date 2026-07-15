@@ -87,7 +87,7 @@ export function PuzzleReveal({ initial = false }: { initial?: boolean }) {
     }
 
     if (initial) {
-      start(2000);
+      start(900);
       return () => timers.forEach(window.clearTimeout);
     }
 
