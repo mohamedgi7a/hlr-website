@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2, Handshake, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { ConsultationForm } from "./ConsultationForm";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
@@ -35,8 +35,8 @@ const pageMeta = {
     en: ["Our Process", "A clear method that supports selection quality, efficient delivery, and follow-up."]
   },
   partners: {
-    ar: ["شركاء النجاح", "نعرض فقط الشراكات والشعارات الرسمية المؤكدة."],
-    en: ["Success Partners", "Only confirmed partnerships and official brand assets are displayed."]
+    ar: ["شركاء النجاح", "نفخر بشراكاتنا الاستراتيجية مع نخبة من الجهات التي تسهم في تحقيق رؤيتنا وتطوير أعمالنا."],
+    en: ["Success Partners", "We are proud of strategic partnerships with leading organizations that support our vision and business growth."]
   },
   contact: {
     ar: ["تواصل معنا", "شاركنا احتياج منشأتك عبر نموذج واضح وآمن."],
@@ -149,7 +149,30 @@ function ProcessContent({ locale }: { locale: Locale }) {
 
 function PartnersContent({ locale }: { locale: Locale }) {
   const ar = locale === "ar";
-  return <section className="section"><div className="container"><div className="partner-placeholder"><Handshake size={46} /><h2>{ar ? "بانتظار الشعارات الرسمية المعتمدة" : "Awaiting approved official logos"}</h2><p>{ar ? "لن نعرض أسماء أو شعارات جهات غير مؤكدة. عند تزويد المشروع بملفات الشعارات الرسمية، يمكن إضافتها هنا مع الحفاظ على ألوانها ونسبها الأصلية." : "No unconfirmed company names or logos are displayed. Approved official files can be added here while preserving their original colors and proportions."}</p></div></div></section>;
+  return (
+    <section className="section partners-section">
+      <div className="container">
+        <SectionHeading
+          eyebrow={ar ? "شراكات نبني عليها" : "Partnerships we build on"}
+          title={ar ? "جهات رائدة وثقة نعتز بها." : "Leading organizations and trusted relationships."}
+          text={ar ? "نعمل مع جهات وطنية وشركات رائدة في قطاعات متنوعة، ونواصل بناء شراكات تدعم جودة التنفيذ والنمو المستدام." : "We work with leading national organizations across diverse sectors and continue building partnerships that support delivery quality and sustainable growth."}
+        />
+        <div className="partners-showcase">
+          <div className="partners-board-crop">
+            <Image
+              className="partners-board-image"
+              src="/partners/partners-board.png"
+              alt={ar ? "شعارات شركاء نجاح HLR" : "HLR success partner logos"}
+              width={608}
+              height={730}
+              sizes="(max-width: 760px) calc(100vw - 58px), 820px"
+            />
+          </div>
+        </div>
+        <p className="partners-note">{ar ? "سابك، stc، أرامكو السعودية، وزارة الصحة، الشركة السعودية للكهرباء، الهيئة الملكية للجبيل وينبع، معادن، شركة المياه الوطنية، البريد السعودي، روشن، القدية، شركة الدرعية، الخطوط السعودية، مطار الملك خالد الدولي، ونيوم." : "SABIC, stc, Saudi Aramco, Ministry of Health, Saudi Electricity Company, Royal Commission for Jubail and Yanbu, Ma'aden, National Water Company, Saudi Post, ROSHN, Qiddiya, Diriyah Company, SAUDIA, King Khalid International Airport, and NEOM."}</p>
+      </div>
+    </section>
+  );
 }
 
 function FormContent({ locale, contact }: { locale: Locale; contact: boolean }) {
