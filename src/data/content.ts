@@ -22,7 +22,13 @@ export type IconName =
   | "store"
   | "eye"
   | "message"
-  | "briefcase";
+  | "briefcase"
+  | "badge"
+  | "coins"
+  | "scale"
+  | "calculator"
+  | "receipt"
+  | "hardhat";
 
 export const t = (value: LocalText, locale: Locale) => value[locale];
 
@@ -112,6 +118,7 @@ export const whyItems: Array<{ icon: IconName; title: LocalText; description: Lo
 export const services: Array<{
   slug: string;
   icon: IconName;
+  accentIcon: IconName;
   title: LocalText;
   description: LocalText;
   image: string;
@@ -122,6 +129,7 @@ export const services: Array<{
   {
     slug: "human-resources-organizational-consulting",
     icon: "settings",
+    accentIcon: "users",
     title: { ar: "إدارة الموارد البشرية والاستشارات التنظيمية", en: "Human Resources & Organizational Consulting" },
     description: {
       ar: "ندير عمليات الموارد البشرية في منشأتك داخل المملكة وفق نظام العمل السعودي، من التوظيف وإدارة الموظفين إلى تقييم الأداء وتطوير السياسات الداخلية، مع استشارات تنظيمية تدعم الامتثال والاستقرار الوظيفي.",
@@ -142,6 +150,7 @@ export const services: Array<{
   {
     slug: "business-setup-misa-licensing",
     icon: "building",
+    accentIcon: "badge",
     title: { ar: "تأسيس الشركات والحصول على التراخيص", en: "Business Setup & MISA Licensing" },
     description: {
       ar: "نساعد شركتك في دخول السوق السعودي عبر تأسيس كيان رسمي معتمد لدى وزارة الاستثمار السعودية (MISA)، وإصدار التراخيص الاستثمارية والسجل التجاري والربط مع الجهات الحكومية.",
@@ -162,6 +171,7 @@ export const services: Array<{
   {
     slug: "government-relations-compliance",
     icon: "file",
+    accentIcon: "shield",
     title: { ar: "العلاقات الحكومية والامتثال", en: "Government Relations & Compliance" },
     description: {
       ar: "ندير معاملاتك الحكومية من خلال فريق علاقات حكومية محترف، بما يشمل التأشيرات والإقامات ونقل الكفالات وتجديد الرخص وتحديث السجلات والتوافق مع المنصات الرسمية.",
@@ -181,7 +191,8 @@ export const services: Array<{
   },
   {
     slug: "payroll-wage-protection",
-    icon: "finance",
+    icon: "coins",
+    accentIcon: "shield",
     title: { ar: "إدارة الرواتب وحماية الأجور", en: "Payroll Management & Wage Protection System" },
     description: {
       ar: "نقدم نظامًا متكاملًا لإدارة الرواتب بدقة وشفافية ومتوافقًا مع نظام حماية الأجور (WPS)، من احتساب الرواتب والاستقطاعات إلى الملفات البنكية والتكامل الحكومي والمالي.",
@@ -201,7 +212,8 @@ export const services: Array<{
   },
   {
     slug: "legal-consulting-corporate-governance",
-    icon: "shield",
+    icon: "scale",
+    accentIcon: "shield",
     title: { ar: "الاستشارات القانونية والحوكمة", en: "Legal Consulting & Corporate Governance" },
     description: {
       ar: "نقدم دعمًا قانونيًا متكاملًا لتأسيس وتشغيل شركتك في المملكة، يشمل صياغة العقود وسياسات الامتثال ومتابعة الأنظمة والتشريعات المحلية والحوكمة المؤسسية.",
@@ -221,7 +233,8 @@ export const services: Array<{
   },
   {
     slug: "accounting-tax-zatca-integration",
-    icon: "chart",
+    icon: "calculator",
+    accentIcon: "receipt",
     title: { ar: "المحاسبة والضرائب والتكامل مع الزكاة", en: "Accounting, Tax & ZATCA Integration" },
     description: {
       ar: "ندير حساباتك المالية والضريبية بتكامل مباشر مع هيئة الزكاة والضريبة والجمارك (ZATCA)، بما يشمل الفواتير الإلكترونية وضريبة القيمة المضافة وتقديم الإقرارات.",
@@ -241,7 +254,8 @@ export const services: Array<{
   },
   {
     slug: "business-consulting-services",
-    icon: "briefcase",
+    icon: "chart",
+    accentIcon: "briefcase",
     title: { ar: "الاستشارات الإدارية والمالية", en: "Business Consulting Services" },
     description: {
       ar: "نقدم استشارات استراتيجية تساعد شركتك على فهم السوق السعودي، وتشمل دراسات السوق وتحليل التكلفة التشغيلية وهيكلة الأعمال ووضع خطط دخول وتشغيل فعالة.",
@@ -261,7 +275,8 @@ export const services: Array<{
   },
   {
     slug: "manpower-outsourcing",
-    icon: "users",
+    icon: "hardhat",
+    accentIcon: "users",
     title: { ar: "خدمات التشغيل والاستقدام", en: "Manpower & Outsourcing" },
     description: {
       ar: "نوفر القوى العاملة المؤهلة لتشغيل مشاريعك داخل المملكة، مع إدارة شاملة للاستقدام والتأشيرات والإقامات والرواتب والإشراف الميداني ضمن حلول مرنة تناسب نشاطك.",

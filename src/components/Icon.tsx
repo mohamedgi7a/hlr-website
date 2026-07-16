@@ -1,17 +1,23 @@
 import {
   BarChart3,
+  BadgeCheck,
   BriefcaseBusiness,
   Building2,
+  Calculator,
+  CircleDollarSign,
   Factory,
   FileCheck2,
   GraduationCap,
   Handshake,
+  HardHat,
   Headphones,
   HeartPulse,
   Hotel,
   Landmark,
   Laptop2,
   MessageSquareText,
+  ReceiptText,
+  Scale,
   Search,
   Settings2,
   ShieldCheck,
@@ -44,7 +50,13 @@ const icons = {
   store: Store,
   eye: Eye,
   message: MessageSquareText,
-  briefcase: BriefcaseBusiness
+  briefcase: BriefcaseBusiness,
+  badge: BadgeCheck,
+  coins: CircleDollarSign,
+  scale: Scale,
+  calculator: Calculator,
+  receipt: ReceiptText,
+  hardhat: HardHat
 };
 
 export function Icon({ name, size = 24, className }: { name: IconName; size?: number; className?: string }) {

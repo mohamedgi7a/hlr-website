@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { ConsultationForm } from "./ConsultationForm";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
-import { faqs, processSteps, sectors, services, story, t, values } from "@/data/content";
+import { faqs, processSteps, sectors, services, story, t, values, type IconName } from "@/data/content";
 import { localizedPath, type Locale } from "@/lib/i18n";
 
 type PageKind = "about" | "services" | "sectors" | "process" | "partners" | "contact" | "request-consultation" | "privacy" | "terms" | "service";
@@ -56,7 +56,19 @@ const pageMeta = {
   }
 } as const;
 
-function InnerHero({ locale, title, description, parent, image, imageAlt = "" }: { locale: Locale; title: string; description: string; parent?: string; image?: string; imageAlt?: string }) {
+function ServiceArtwork({ primary, secondary, variant = 0, compact = false }: { primary: IconName; secondary: IconName; variant?: number; compact?: boolean }) {
+  return (
+    <div className={`service-artwork service-artwork--${variant % 4}${compact ? " service-artwork--compact" : ""}`} aria-hidden="true">
+      <span className="service-artwork__orbit" />
+      <span className="service-artwork__main"><Icon name={primary} size={compact ? 56 : 68} /></span>
+      <span className="service-artwork__secondary"><Icon name={secondary} size={compact ? 30 : 35} /></span>
+      <span className="service-artwork__dot service-artwork__dot--one" />
+      <span className="service-artwork__dot service-artwork__dot--two" />
+    </div>
+  );
+}
+
+function InnerHero({ locale, title, description, parent, image, imageAlt = "", artwork }: { locale: Locale; title: string; description: string; parent?: string; image?: string; imageAlt?: string; artwork?: { primary: IconName; secondary: IconName; variant: number } }) {
   const ar = locale === "ar";
   return (
     <section className="inner-hero">
@@ -69,7 +81,8 @@ function InnerHero({ locale, title, description, parent, image, imageAlt = "" }:
           </nav>
           <h1>{title}</h1><p>{description}</p>
         </div>
-        {image ? <div className="inner-hero__visual"><Image src={image} alt={imageAlt} fill priority sizes="(max-width: 760px) 100vw, 36vw" /><span aria-hidden="true" /></div> : null}
+        {artwork ? <div className="inner-hero__visual inner-hero__visual--art"><ServiceArtwork primary={artwork.primary} secondary={artwork.secondary} variant={artwork.variant} compact /></div> : null}
+        {!artwork && image ? <div className="inner-hero__visual"><Image src={image} alt={imageAlt} fill priority sizes="(max-width: 760px) 100vw, 36vw" /><span aria-hidden="true" /></div> : null}
       </div>
     </section>
   );
@@ -81,9 +94,10 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
 
   if (kind === "service" && serviceSlug) {
     const service = services.find((item) => item.slug === serviceSlug)!;
+    const serviceIndex = services.findIndex((item) => item.slug === serviceSlug);
     return (
       <main id="main-content">
-        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} image={service.image} imageAlt={t(service.imageAlt, locale)} />
+        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} artwork={{ primary: service.icon, secondary: service.accentIcon, variant: serviceIndex }} />
         <section className="section">
           <div className="container content-grid">
             <aside className="content-aside">
@@ -125,7 +139,13 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
   };
   return (
     <main id="main-content">
-      <InnerHero locale={locale} title={title} description={description} image={pageImages[kind]} />
+      <InnerHero
+        locale={locale}
+        title={title}
+        description={description}
+        image={kind === "services" ? undefined : pageImages[kind]}
+        artwork={kind === "services" ? { primary: "briefcase", secondary: "settings", variant: 1 } : undefined}
+      />
       {kind === "about" ? <AboutContent locale={locale} /> : null}
       {kind === "services" ? <ServicesContent locale={locale} /> : null}
       {kind === "sectors" ? <SectorsContent locale={locale} /> : null}
@@ -162,8 +182,7 @@ function ServicesContent({ locale }: { locale: Locale }) {
             return (
               <article className="service-list-card service-list-card--visual" key={service.slug}>
                 <Link className="service-list-card__image" href={href} aria-label={t(service.title, locale)}>
-                  <Image src={service.image} alt={t(service.imageAlt, locale)} fill sizes="(max-width: 760px) calc(100vw - 38px), (max-width: 1180px) 46vw, 540px" />
-                  <span className="service-list-card__icon"><Icon name={service.icon} size={25} /></span>
+                  <ServiceArtwork primary={service.icon} secondary={service.accentIcon} variant={index} />
                 </Link>
                 <div className="service-list-card__body">
                   <span className="service-list-card__number">{String(index + 1).padStart(2, "0")}</span>
