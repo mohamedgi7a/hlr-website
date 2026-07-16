@@ -5,6 +5,7 @@ import {
   Building2,
   Calculator,
   CircleDollarSign,
+  Eye,
   Factory,
   FileCheck2,
   GraduationCap,
@@ -24,12 +25,12 @@ import {
   Sparkles,
   Store,
   Target,
-  UsersRound,
-  Eye
+  UsersRound
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { IconName } from "@/data/content";
 
-const icons = {
+const icons: Record<IconName, LucideIcon> = {
   search: Search,
   file: FileCheck2,
   users: UsersRound,
@@ -59,7 +60,23 @@ const icons = {
   hardhat: HardHat
 };
 
-export function Icon({ name, size = 24, className }: { name: IconName; size?: number; className?: string }) {
+export function Icon({
+  name,
+  size = 24,
+  className
+}: {
+  name: IconName;
+  size?: number;
+  className?: string;
+}) {
   const Component = icons[name];
-  return <Component aria-hidden="true" size={size} strokeWidth={1.7} className={className} />;
+
+  return (
+    <Component
+      aria-hidden="true"
+      size={size}
+      strokeWidth={1.7}
+      className={className}
+    />
+  );
 }
