@@ -1,29 +1,36 @@
 import {
   BarChart3,
+  BadgeCheck,
   BriefcaseBusiness,
   Building2,
+  Calculator,
+  CircleDollarSign,
+  Eye,
   Factory,
   FileCheck2,
   GraduationCap,
   Handshake,
+  HardHat,
   Headphones,
   HeartPulse,
   Hotel,
   Landmark,
   Laptop2,
   MessageSquareText,
+  ReceiptText,
+  Scale,
   Search,
   Settings2,
   ShieldCheck,
   Sparkles,
   Store,
   Target,
-  UsersRound,
-  Eye
+  UsersRound
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { IconName } from "@/data/content";
 
-const icons = {
+const icons: Record<IconName, LucideIcon> = {
   search: Search,
   file: FileCheck2,
   users: UsersRound,
@@ -44,10 +51,32 @@ const icons = {
   store: Store,
   eye: Eye,
   message: MessageSquareText,
-  briefcase: BriefcaseBusiness
+  briefcase: BriefcaseBusiness,
+  badge: BadgeCheck,
+  coins: CircleDollarSign,
+  scale: Scale,
+  calculator: Calculator,
+  receipt: ReceiptText,
+  hardhat: HardHat
 };
 
-export function Icon({ name, size = 24, className }: { name: IconName; size?: number; className?: string }) {
+export function Icon({
+  name,
+  size = 24,
+  className
+}: {
+  name: IconName;
+  size?: number;
+  className?: string;
+}) {
   const Component = icons[name];
-  return <Component aria-hidden="true" size={size} strokeWidth={1.7} className={className} />;
+
+  return (
+    <Component
+      aria-hidden="true"
+      size={size}
+      strokeWidth={1.7}
+      className={className}
+    />
+  );
 }
