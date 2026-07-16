@@ -4,7 +4,7 @@ import { LocaleSite } from "@/components/LocaleSite";
 
 export const metadata: Metadata = {
   title: "HLR | Human Resources Solutions",
-  description: "Integrated human resources solutions for talent acquisition, recruitment, workforce supply, HR management, consulting, and post-employment support in Saudi Arabia.",
+  description: "Integrated Saudi business solutions covering HR, company setup and licensing, government relations, payroll, accounting and tax, consulting, and manpower outsourcing.",
   alternates: { canonical: "/en", languages: { ar: "/", en: "/en" } }
 };
 

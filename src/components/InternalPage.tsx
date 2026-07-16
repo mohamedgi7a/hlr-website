@@ -23,8 +23,8 @@ const pageMeta = {
     en: ["About HLR", "An HR partner that understands your organization before recommending a solution."]
   },
   services: {
-    ar: ["خدماتنا", "حلول متكاملة تغطي الاستقطاب والتوظيف والتشغيل والمتابعة."],
-    en: ["Our Services", "Integrated solutions across acquisition, recruitment, workforce operations, and follow-up."]
+    ar: ["خدماتنا", "ثمانية مسارات متكاملة تدعم تأسيس أعمالك وإدارتها وتشغيلها في المملكة."],
+    en: ["Our Services", "Eight integrated capabilities supporting business setup, management, and operations in Saudi Arabia."]
   },
   sectors: {
     ar: ["القطاعات التي نخدمها", "خبرة مرنة تتكيف مع اختلاف بيئات العمل ومتطلبات الكفاءات."],
@@ -56,7 +56,7 @@ const pageMeta = {
   }
 } as const;
 
-function InnerHero({ locale, title, description, parent, image }: { locale: Locale; title: string; description: string; parent?: string; image?: string }) {
+function InnerHero({ locale, title, description, parent, image, imageAlt = "" }: { locale: Locale; title: string; description: string; parent?: string; image?: string; imageAlt?: string }) {
   const ar = locale === "ar";
   return (
     <section className="inner-hero">
@@ -69,7 +69,7 @@ function InnerHero({ locale, title, description, parent, image }: { locale: Loca
           </nav>
           <h1>{title}</h1><p>{description}</p>
         </div>
-        {image ? <div className="inner-hero__visual"><Image src={image} alt="" fill priority sizes="(max-width: 760px) 100vw, 36vw" /><span aria-hidden="true" /></div> : null}
+        {image ? <div className="inner-hero__visual"><Image src={image} alt={imageAlt} fill priority sizes="(max-width: 760px) 100vw, 36vw" /><span aria-hidden="true" /></div> : null}
       </div>
     </section>
   );
@@ -83,7 +83,7 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
     const service = services.find((item) => item.slug === serviceSlug)!;
     return (
       <main id="main-content">
-        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} image="/images/hero-saudi-workforce.webp" />
+        <InnerHero locale={locale} parent="services" title={t(service.title, locale)} description={t(service.description, locale)} image={service.image} imageAlt={t(service.imageAlt, locale)} />
         <section className="section">
           <div className="container content-grid">
             <aside className="content-aside">
@@ -114,7 +114,7 @@ export function InternalPage({ locale, kind, serviceSlug }: { locale: Locale; ki
   const [title, description] = pageMeta[kind][locale];
   const pageImages: Record<Exclude<PageKind, "service">, string> = {
     about: "/images/story-saudi-workforce.webp",
-    services: "/images/hero-saudi-workforce.webp",
+    services: "/images/services/manpower-outsourcing.webp",
     sectors: "/images/sector-government-saudi.webp",
     process: "/images/strategy-saudi-team.webp",
     partners: "/images/strategy-saudi-team.webp",
@@ -148,7 +148,36 @@ function AboutContent({ locale }: { locale: Locale }) {
 function ServicesContent({ locale }: { locale: Locale }) {
   const ar = locale === "ar";
   const Arrow = ar ? ArrowLeft : ArrowRight;
-  return <section className="section"><div className="container"><SectionHeading eyebrow={ar ? "ستة مسارات مترابطة" : "Six connected capabilities"} title={ar ? "اختر نقطة البداية المناسبة لاحتياجك." : "Choose the right starting point for your needs."} /><div className="cards-grid">{services.map((service) => <article className="service-list-card" key={service.slug}><Icon name={service.icon} size={30} /><h2>{t(service.title, locale)}</h2><p>{t(service.description, locale)}</p><Link href={localizedPath(locale, `/services/${service.slug}`)}>{ar ? "تفاصيل الخدمة" : "Service details"}<Arrow size={18} /></Link></article>)}</div></div></section>;
+  return (
+    <section className="section services-catalog">
+      <div className="container">
+        <SectionHeading
+          eyebrow={ar ? "ثمانية مسارات متكاملة" : "Eight integrated capabilities"}
+          title={ar ? "خدمات تدعم تأسيس أعمالك وتشغيلها ونموها في المملكة." : "Services that support your setup, operations, and growth in Saudi Arabia."}
+          text={ar ? "من تأسيس الكيان والامتثال إلى إدارة الموارد البشرية والرواتب وتوريد القوى العاملة؛ اختر الخدمة الأقرب لاحتياج منشأتك." : "From business setup and compliance to HR, payroll, and manpower outsourcing—choose the service that fits your organization."}
+        />
+        <div className="services-catalog-grid">
+          {services.map((service, index) => {
+            const href = localizedPath(locale, `/services/${service.slug}`);
+            return (
+              <article className="service-list-card service-list-card--visual" key={service.slug}>
+                <Link className="service-list-card__image" href={href} aria-label={t(service.title, locale)}>
+                  <Image src={service.image} alt={t(service.imageAlt, locale)} fill sizes="(max-width: 760px) calc(100vw - 38px), (max-width: 1180px) 46vw, 540px" />
+                  <span className="service-list-card__icon"><Icon name={service.icon} size={25} /></span>
+                </Link>
+                <div className="service-list-card__body">
+                  <span className="service-list-card__number">{String(index + 1).padStart(2, "0")}</span>
+                  <h2>{t(service.title, locale)}</h2>
+                  <p>{t(service.description, locale)}</p>
+                  <Link href={href}>{ar ? "تفاصيل الخدمة" : "Service details"}<Arrow size={18} /></Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function SectorsContent({ locale }: { locale: Locale }) {

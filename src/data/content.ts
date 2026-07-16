@@ -114,115 +114,169 @@ export const services: Array<{
   icon: IconName;
   title: LocalText;
   description: LocalText;
+  image: string;
+  imageAlt: LocalText;
   problems: LocalText[];
   deliverables: LocalText[];
 }> = [
   {
-    slug: "workforce-supply",
-    icon: "users",
-    title: { ar: "توريد وتأجير العمالة والكفاءات", en: "Workforce Supply" },
-    description: {
-      ar: "توفير عمالة وكفاءات مؤهلة لمختلف المهن والقطاعات وفق حجم العمل ومتطلبات التشغيل.",
-      en: "Provide qualified workforce across roles and sectors, aligned with your operational scale and requirements."
-    },
-    problems: [
-      { ar: "الاحتياج إلى فرق مرنة حسب التشغيل", en: "Need for flexible operational teams" },
-      { ar: "صعوبة تغطية تخصصات متنوعة", en: "Difficulty covering varied specializations" }
-    ],
-    deliverables: [
-      { ar: "تحديد هيكل الفريق المطلوب", en: "Required team structure definition" },
-      { ar: "اختيار الكفاءات المناسبة", en: "Selection of suitable talent" },
-      { ar: "متابعة جودة الخدمة", en: "Ongoing service quality follow-up" }
-    ]
-  },
-  {
-    slug: "talent-acquisition",
-    icon: "search",
-    title: { ar: "استقطاب المواهب", en: "Talent Acquisition" },
-    description: {
-      ar: "البحث عن أفضل الكفاءات وفرزها وتقييمها وفق احتياجات منشأتك وطبيعة الوظيفة.",
-      en: "Source, screen, and assess strong talent based on your role and business requirements."
-    },
-    problems: [
-      { ar: "صعوبة الوصول إلى المرشحين المناسبين", en: "Difficulty reaching relevant candidates" },
-      { ar: "تفاوت جودة الفرز الأولي", en: "Inconsistent initial screening quality" }
-    ],
-    deliverables: [
-      { ar: "تحليل متطلبات الوظيفة", en: "Role requirement analysis" },
-      { ar: "بحث وفرز وتقييم المرشحين", en: "Candidate sourcing, screening, and assessment" },
-      { ar: "قائمة مختصرة واضحة", en: "A focused, qualified shortlist" }
-    ]
-  },
-  {
-    slug: "recruitment-contracting",
-    icon: "file",
-    title: { ar: "التوظيف والتعاقد", en: "Recruitment & Contracting" },
-    description: {
-      ar: "إدارة إجراءات التوظيف والتعاقد بصورة منظمة ومرنة تضمن وضوح العملية وسرعة الإنجاز.",
-      en: "Manage recruitment and contracting through a structured, flexible, and transparent process."
-    },
-    problems: [
-      { ar: "تعدد مراحل التوظيف وتشتت المتابعة", en: "Fragmented recruitment workflows" },
-      { ar: "بطء التنسيق بين الأطراف", en: "Slow coordination between stakeholders" }
-    ],
-    deliverables: [
-      { ar: "تنسيق مراحل الاختيار", en: "Selection-stage coordination" },
-      { ar: "تنظيم إجراءات التعاقد", en: "Structured contracting procedures" },
-      { ar: "متابعة واضحة لحالة الطلب", en: "Clear application status tracking" }
-    ]
-  },
-  {
-    slug: "hr-management",
+    slug: "human-resources-organizational-consulting",
     icon: "settings",
-    title: { ar: "إدارة الموارد البشرية", en: "HR Management" },
+    title: { ar: "إدارة الموارد البشرية والاستشارات التنظيمية", en: "Human Resources & Organizational Consulting" },
     description: {
-      ar: "حلول تساعد المنشآت على تنظيم عمليات الموارد البشرية ورفع كفاءتها التشغيلية.",
-      en: "Practical solutions that organize HR operations and improve operational efficiency."
+      ar: "ندير عمليات الموارد البشرية في منشأتك داخل المملكة وفق نظام العمل السعودي، من التوظيف وإدارة الموظفين إلى تقييم الأداء وتطوير السياسات الداخلية، مع استشارات تنظيمية تدعم الامتثال والاستقرار الوظيفي.",
+      en: "We manage HR operations in Saudi Arabia—from recruitment and employee administration to performance management, internal policies, compliance, and organizational stability."
     },
+    image: "/images/services/human-resources-organizational-consulting.webp",
+    imageAlt: { ar: "فريق موارد بشرية سعودي يناقش الهيكل التنظيمي وإدارة الموظفين", en: "A Saudi HR team discussing organizational structure and employee management" },
     problems: [
-      { ar: "عدم وضوح الإجراءات الداخلية", en: "Unclear internal HR processes" },
-      { ar: "هدر الوقت في الأعمال التشغيلية", en: "Time lost to manual HR operations" }
+      { ar: "تشتت إجراءات الموارد البشرية والسياسات الداخلية", en: "Fragmented HR procedures and internal policies" },
+      { ar: "الحاجة إلى مواءمة الممارسات مع نظام العمل السعودي", en: "Need to align practices with Saudi labor regulations" }
     ],
     deliverables: [
-      { ar: "مراجعة العمليات الحالية", en: "Current process review" },
-      { ar: "تنظيم سير العمل", en: "Workflow organization" },
-      { ar: "حلول تشغيلية قابلة للتطبيق", en: "Actionable operating solutions" }
+      { ar: "تشخيص وتنظيم عمليات الموارد البشرية", en: "HR process assessment and organization" },
+      { ar: "سياسات وإجراءات داخلية واضحة", en: "Clear internal policies and procedures" },
+      { ar: "دعم الأداء والامتثال والاستقرار الوظيفي", en: "Performance, compliance, and workforce stability support" }
     ]
   },
   {
-    slug: "consulting",
-    icon: "chart",
-    title: { ar: "الدراسات والاستشارات", en: "HR Studies & Consulting" },
+    slug: "business-setup-misa-licensing",
+    icon: "building",
+    title: { ar: "تأسيس الشركات والحصول على التراخيص", en: "Business Setup & MISA Licensing" },
     description: {
-      ar: "تحليل احتياجات الموارد البشرية وتقديم توصيات وحلول عملية مخصصة للمنشأة.",
-      en: "Analyze HR needs and provide practical recommendations tailored to your organization."
+      ar: "نساعد شركتك في دخول السوق السعودي عبر تأسيس كيان رسمي معتمد لدى وزارة الاستثمار السعودية (MISA)، وإصدار التراخيص الاستثمارية والسجل التجاري والربط مع الجهات الحكومية.",
+      en: "We help your company enter the Saudi market through MISA licensing, legal entity setup, commercial registration, and coordinated government registrations."
     },
+    image: "/images/services/business-setup-misa-licensing.webp",
+    imageAlt: { ar: "فريق أعمال سعودي يراجع وثائق تأسيس شركة والتراخيص الرسمية", en: "A Saudi business team reviewing company setup and licensing documents" },
     problems: [
-      { ar: "قرارات موارد بشرية دون بيانات كافية", en: "HR decisions made without enough insight" },
-      { ar: "الحاجة إلى منظور متخصص ومحايد", en: "Need for an expert, objective perspective" }
+      { ar: "تعدد متطلبات دخول السوق والجهات الرسمية", en: "Complex market-entry and authority requirements" },
+      { ar: "الحاجة إلى مسار تأسيس متوافق وسريع", en: "Need for a compliant and efficient setup path" }
     ],
     deliverables: [
-      { ar: "تحليل الاحتياج", en: "Needs analysis" },
-      { ar: "تحديد الفجوات والأولويات", en: "Gap and priority identification" },
-      { ar: "توصيات عملية مخصصة", en: "Tailored practical recommendations" }
+      { ar: "ترخيص وزارة الاستثمار وتأسيس الكيان", en: "MISA licensing and legal entity setup" },
+      { ar: "إصدار السجل والتراخيص المطلوبة", en: "Commercial registration and required licenses" },
+      { ar: "تنسيق التسجيل والربط مع الجهات الحكومية", en: "Government registration and integration coordination" }
     ]
   },
   {
-    slug: "post-employment",
+    slug: "government-relations-compliance",
+    icon: "file",
+    title: { ar: "العلاقات الحكومية والامتثال", en: "Government Relations & Compliance" },
+    description: {
+      ar: "ندير معاملاتك الحكومية من خلال فريق علاقات حكومية محترف، بما يشمل التأشيرات والإقامات ونقل الكفالات وتجديد الرخص وتحديث السجلات والتوافق مع المنصات الرسمية.",
+      en: "Our GRO team manages visas, residency permits, sponsorship transfers, license renewals, record updates, and compliance across official Saudi platforms."
+    },
+    image: "/images/services/government-relations-compliance.webp",
+    imageAlt: { ar: "فريق سعودي يراجع معاملات حكومية ووثائق الامتثال", en: "A Saudi team reviewing government transactions and compliance documents" },
+    problems: [
+      { ar: "تعدد المنصات والمعاملات الحكومية", en: "Multiple government platforms and transactions" },
+      { ar: "مخاطر التأخير أو عدم الامتثال", en: "Risk of delays or non-compliance" }
+    ],
+    deliverables: [
+      { ar: "إدارة التأشيرات والإقامات ونقل الخدمات", en: "Visa, residency, and sponsorship services" },
+      { ar: "تجديد الرخص وتحديث السجلات", en: "License renewals and record updates" },
+      { ar: "متابعة قوى ومقيم والتأمينات الاجتماعية", en: "Qiwa, Muqeem, and GOSI coordination" }
+    ]
+  },
+  {
+    slug: "payroll-wage-protection",
+    icon: "finance",
+    title: { ar: "إدارة الرواتب وحماية الأجور", en: "Payroll Management & Wage Protection System" },
+    description: {
+      ar: "نقدم نظامًا متكاملًا لإدارة الرواتب بدقة وشفافية ومتوافقًا مع نظام حماية الأجور (WPS)، من احتساب الرواتب والاستقطاعات إلى الملفات البنكية والتكامل الحكومي والمالي.",
+      en: "We deliver accurate, transparent payroll administration aligned with WPS, including calculations, deductions, bank files, and government and finance-system integration."
+    },
+    image: "/images/services/payroll-wage-protection.webp",
+    imageAlt: { ar: "فريق مالي سعودي يدير الرواتب ونظام حماية الأجور", en: "A Saudi finance team managing payroll and wage protection" },
+    problems: [
+      { ar: "أخطاء الرواتب والاستقطاعات والملفات البنكية", en: "Payroll, deduction, and bank-file errors" },
+      { ar: "الحاجة إلى الالتزام بنظام حماية الأجور", en: "Need to maintain WPS compliance" }
+    ],
+    deliverables: [
+      { ar: "احتساب ومراجعة الرواتب والاستقطاعات", en: "Payroll and deduction calculation and review" },
+      { ar: "إعداد الملفات البنكية ونظام حماية الأجور", en: "Bank files and WPS preparation" },
+      { ar: "تقارير وتكاملات مالية منظمة", en: "Structured reporting and financial integrations" }
+    ]
+  },
+  {
+    slug: "legal-consulting-corporate-governance",
     icon: "shield",
-    title: { ar: "خدمات ما بعد التوظيف", en: "Post-Employment Support" },
+    title: { ar: "الاستشارات القانونية والحوكمة", en: "Legal Consulting & Corporate Governance" },
     description: {
-      ar: "متابعة مستمرة بعد التوظيف لدعم استقرار الكفاءات وضمان جودة الخدمة.",
-      en: "Continued follow-up after placement to support workforce stability and service quality."
+      ar: "نقدم دعمًا قانونيًا متكاملًا لتأسيس وتشغيل شركتك في المملكة، يشمل صياغة العقود وسياسات الامتثال ومتابعة الأنظمة والتشريعات المحلية والحوكمة المؤسسية.",
+      en: "We provide integrated legal support for operating in Saudi Arabia, including contracts, compliance policies, regulatory monitoring, and sound corporate governance."
     },
+    image: "/images/services/legal-consulting-corporate-governance.webp",
+    imageAlt: { ar: "فريق قانوني سعودي يناقش الحوكمة والامتثال المؤسسي", en: "A Saudi legal team discussing governance and corporate compliance" },
     problems: [
-      { ar: "ضعف المتابعة بعد مباشرة العمل", en: "Limited follow-up after onboarding" },
-      { ar: "تأخر اكتشاف تحديات الاستقرار", en: "Late identification of stability issues" }
+      { ar: "الحاجة إلى عقود وسياسات متوافقة مع الأنظمة", en: "Need for compliant contracts and policies" },
+      { ar: "تغير المتطلبات النظامية ومخاطر الحوكمة", en: "Changing regulations and governance risks" }
     ],
     deliverables: [
-      { ar: "متابعة ما بعد المباشرة", en: "Post-start follow-up" },
-      { ar: "رصد الملاحظات مبكرًا", en: "Early feedback capture" },
-      { ar: "دعم استقرار الخدمة", en: "Service stability support" }
+      { ar: "صياغة ومراجعة العقود", en: "Contract drafting and review" },
+      { ar: "سياسات امتثال وحوكمة مؤسسية", en: "Compliance and corporate governance policies" },
+      { ar: "متابعة الأنظمة والتشريعات المحلية", en: "Monitoring Saudi laws and regulations" }
+    ]
+  },
+  {
+    slug: "accounting-tax-zatca-integration",
+    icon: "chart",
+    title: { ar: "المحاسبة والضرائب والتكامل مع الزكاة", en: "Accounting, Tax & ZATCA Integration" },
+    description: {
+      ar: "ندير حساباتك المالية والضريبية بتكامل مباشر مع هيئة الزكاة والضريبة والجمارك (ZATCA)، بما يشمل الفواتير الإلكترونية وضريبة القيمة المضافة وتقديم الإقرارات.",
+      en: "We manage accounting and tax operations with ZATCA integration, including e-invoicing, VAT calculation, and organized filing of tax returns."
+    },
+    image: "/images/services/accounting-tax-zatca-integration.webp",
+    imageAlt: { ar: "فريق محاسبة سعودي يراجع الضرائب والفواتير الإلكترونية", en: "A Saudi accounting team reviewing tax and e-invoicing records" },
+    problems: [
+      { ar: "تعقيد الالتزامات المحاسبية والضريبية", en: "Complex accounting and tax obligations" },
+      { ar: "الحاجة إلى تكامل دقيق مع متطلبات ZATCA", en: "Need for accurate ZATCA integration" }
+    ],
+    deliverables: [
+      { ar: "إدارة الحسابات والقيود المالية", en: "Accounting and financial records management" },
+      { ar: "الفوترة الإلكترونية وضريبة القيمة المضافة", en: "E-invoicing and VAT management" },
+      { ar: "إعداد وتقديم الإقرارات الضريبية", en: "Tax return preparation and filing" }
+    ]
+  },
+  {
+    slug: "business-consulting-services",
+    icon: "briefcase",
+    title: { ar: "الاستشارات الإدارية والمالية", en: "Business Consulting Services" },
+    description: {
+      ar: "نقدم استشارات استراتيجية تساعد شركتك على فهم السوق السعودي، وتشمل دراسات السوق وتحليل التكلفة التشغيلية وهيكلة الأعمال ووضع خطط دخول وتشغيل فعالة.",
+      en: "Our strategic consulting helps you understand the Saudi market through market studies, operating-cost analysis, business structuring, and effective entry and operating plans."
+    },
+    image: "/images/services/business-consulting-services.webp",
+    imageAlt: { ar: "فريق استشارات سعودي يناقش استراتيجية النمو والأداء المالي", en: "A Saudi consulting team discussing growth strategy and financial performance" },
+    problems: [
+      { ar: "نقص الرؤية الواضحة للسوق والتكاليف", en: "Limited clarity on the market and operating costs" },
+      { ar: "الحاجة إلى نموذج تشغيل وخطة نمو قابلة للتنفيذ", en: "Need for an actionable operating and growth plan" }
+    ],
+    deliverables: [
+      { ar: "دراسات سوق وتحليل جدوى تشغيلية", en: "Market studies and operational feasibility analysis" },
+      { ar: "هيكلة الأعمال وتحليل التكاليف", en: "Business structuring and cost analysis" },
+      { ar: "خطة دخول وتشغيل ونمو", en: "Market-entry, operations, and growth plan" }
+    ]
+  },
+  {
+    slug: "manpower-outsourcing",
+    icon: "users",
+    title: { ar: "خدمات التشغيل والاستقدام", en: "Manpower & Outsourcing" },
+    description: {
+      ar: "نوفر القوى العاملة المؤهلة لتشغيل مشاريعك داخل المملكة، مع إدارة شاملة للاستقدام والتأشيرات والإقامات والرواتب والإشراف الميداني ضمن حلول مرنة تناسب نشاطك.",
+      en: "We supply qualified manpower for projects across Saudi Arabia, with end-to-end recruitment, visas, residency, payroll, and field supervision through flexible outsourcing models."
+    },
+    image: "/images/services/manpower-outsourcing.webp",
+    imageAlt: { ar: "فريق توظيف سعودي مع كوادر مهنية من قطاعات متعددة", en: "A Saudi recruitment team with professional workers from multiple sectors" },
+    problems: [
+      { ar: "صعوبة توفير كوادر جاهزة للتشغيل بسرعة", en: "Difficulty mobilizing qualified workers quickly" },
+      { ar: "تعدد مسؤوليات الاستقدام والتشغيل والمتابعة", en: "Complex recruitment, mobilization, and follow-up responsibilities" }
+    ],
+    deliverables: [
+      { ar: "استقدام وتوريد القوى العاملة المؤهلة", en: "Recruitment and supply of qualified manpower" },
+      { ar: "إدارة التأشيرات والإقامات والرواتب", en: "Visa, residency, and payroll administration" },
+      { ar: "إشراف ميداني ومتابعة مستمرة", en: "Field supervision and ongoing follow-up" }
     ]
   }
 ];
@@ -314,7 +368,7 @@ export const successStrategies = [
 ];
 
 export const faqs = [
-  { q: { ar: "ما الخدمات التي تقدمها HLR؟", en: "What services does HLR provide?" }, a: { ar: "نقدم استقطاب المواهب، والتوظيف والتعاقد، وتأجير وتوريد الكفاءات، وإدارة الموارد البشرية، والدراسات والاستشارات، وخدمات ما بعد التوظيف.", en: "We provide talent acquisition, recruitment and contracting, workforce supply, HR management, consulting, and post-employment support." } },
+  { q: { ar: "ما الخدمات التي تقدمها HLR؟", en: "What services does HLR provide?" }, a: { ar: "نقدم إدارة الموارد البشرية، وتأسيس الشركات والتراخيص، والعلاقات الحكومية، والرواتب، والاستشارات القانونية والمالية، والمحاسبة والضرائب، وخدمات التشغيل والاستقدام.", en: "We provide HR management, business setup and licensing, government relations, payroll, legal and business consulting, accounting and tax, and manpower outsourcing." } },
   { q: { ar: "هل تقدمون حلولًا مخصصة حسب احتياج المنشأة؟", en: "Do you tailor solutions to each organization?" }, a: { ar: "نعم. نبدأ بفهم القطاع وحجم العمل وطبيعة الوظائف، ثم نبني الخدمة وفق الاحتياج الفعلي.", en: "Yes. We first understand your sector, operating scale, and roles, then shape the service around your actual needs." } },
   { q: { ar: "ما القطاعات التي تخدمونها؟", en: "Which sectors do you serve?" }, a: { ar: "نخدم القطاعات الحكومية والصناعية والصحية والتعليمية والمالية والتقنية والضيافة والقطاع التجاري.", en: "We serve government, industrial, healthcare, education, financial, technology, hospitality, and commercial sectors." } },
   { q: { ar: "كيف تبدأ عملية الاستقطاب والتوظيف؟", en: "How does recruitment begin?" }, a: { ar: "تبدأ بتحليل الاحتياج، ثم البحث والفرز، فالمقابلة والتقييم، وبعدها التوظيف والمتابعة.", en: "It begins with needs analysis, followed by sourcing and screening, assessment, placement, and follow-up." } },
@@ -328,7 +382,7 @@ export const labels = {
     whyTitle: "لأن الحل الصحيح يبدأ بفهم احتياجك.",
     whyText: "نستمع إلى متطلبات منشأتك، نحلل طبيعة العمل، ثم نبني حلًا بشريًا مرنًا يحقق الجودة والكفاءة.",
     servicesEyebrow: "خدماتنا",
-    servicesTitle: "توريد عمالة وحلول توظيف متكاملة من الاحتياج إلى المتابعة.",
+    servicesTitle: "حلول متكاملة لتأسيس أعمالك وإدارتها وتشغيلها في المملكة.",
     more: "اعرف المزيد",
     storyEyebrow: "قصتنا واتجاهنا",
     storyTitle: "نضع الإنسان في قلب كل حل نقدمه.",
@@ -356,7 +410,7 @@ export const labels = {
     whyTitle: "Because the right solution starts with understanding.",
     whyText: "We listen, analyze the nature of your operation, and build a flexible people solution that advances quality and efficiency.",
     servicesEyebrow: "Our Services",
-    servicesTitle: "Workforce supply and integrated recruitment solutions from need to follow-up.",
+    servicesTitle: "Integrated solutions to set up, manage, and operate your business in Saudi Arabia.",
     more: "Learn more",
     storyEyebrow: "Our Story & Direction",
     storyTitle: "People are at the heart of every solution.",

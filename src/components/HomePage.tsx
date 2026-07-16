@@ -227,7 +227,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             eyebrow={ar ? "قوى عاملة لكل احتياج" : "Workforce for every need"}
             title={ar ? "نوفر الفرق التي تحافظ على استمرارية تشغيلك." : "Teams that keep your operation moving."}
             text={ar ? "من العمالة التشغيلية إلى الكفاءات المهنية، نحدد التخصص والعدد ونبني فريقًا يلائم طبيعة منشأتك." : "From operational workers to professional talent, we define the roles, scale, and team structure around your business."}
-            action={<Link className="section-link" href={localizedPath(locale, "/services/workforce-supply")}>{ar ? "اطلب فريقك" : "Build your team"}<Arrow size={17} /></Link>}
+            action={<Link className="section-link" href={localizedPath(locale, "/services/manpower-outsourcing")}>{ar ? "اطلب فريقك" : "Build your team"}<Arrow size={17} /></Link>}
           />
           <div className="workforce-focus-grid" data-reveal>
             {workforceAreas.map((area, index) => (

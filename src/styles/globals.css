@@ -575,6 +575,21 @@ button { cursor: pointer; }
 .service-list-card h2, .service-list-card h3 { color: var(--teal-900); font-size: 1.28rem; }
 .service-list-card p { color: var(--text-secondary); line-height: 1.8; }
 .service-list-card a { margin-top: auto; display: flex; align-items: center; gap: 7px; color: var(--teal-700); font-weight: 700; }
+.services-catalog { background: linear-gradient(180deg, #fff 0%, var(--background-alt) 54%, #fff 100%); }
+.services-catalog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.service-list-card--visual { min-width: 0; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(6,79,84,.1); border-radius: 24px; background: white; box-shadow: var(--shadow-card); transition: transform 420ms var(--ease-out-expo), box-shadow 420ms, border-color 420ms; }
+.service-list-card--visual:hover { border-color: rgba(12,133,138,.24); transform: translateY(-7px); box-shadow: var(--shadow-hover); }
+.service-list-card__image { position: relative; min-height: 270px; overflow: hidden; margin: 0 !important; color: inherit !important; background: var(--teal-50); }
+.service-list-card__image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 56%, rgba(3,61,65,.22)); pointer-events: none; }
+.service-list-card__image img { object-fit: cover; transition: transform 750ms var(--ease-soft), filter 500ms; }
+.service-list-card--visual:hover .service-list-card__image img { transform: scale(1.045); filter: saturate(1.04); }
+.service-list-card__icon { position: absolute; z-index: 2; inset-inline-start: 24px; bottom: 20px; width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.72); border-radius: 16px; color: var(--teal-800); background: rgba(255,255,255,.92); box-shadow: 0 12px 28px rgba(3,61,65,.16); backdrop-filter: blur(10px); }
+.service-list-card__body { flex: 1; display: flex; flex-direction: column; padding: 27px 28px 29px; }
+.service-list-card__number { margin-bottom: 14px; color: var(--gold-700); font-size: .76rem; font-weight: 800; letter-spacing: .12em; }
+.service-list-card--visual h2 { min-height: 2.9em; margin: 0 0 12px; color: var(--teal-900); font-size: clamp(1.2rem, 1.8vw, 1.48rem); line-height: 1.45; }
+.service-list-card--visual p { margin: 0 0 24px; color: var(--text-secondary); font-size: .94rem; line-height: 1.9; }
+.service-list-card__body > a { width: fit-content; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--border); color: var(--teal-800); transition: color 220ms, gap 220ms; }
+.service-list-card__body > a:hover { gap: 11px; color: var(--gold-700); }
 .sectors-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .sector-detail { display: grid; grid-template-columns: 155px 1fr; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: white; box-shadow: var(--shadow-card); }
 .sector-detail__image { position: relative; min-height: 210px; }
@@ -667,6 +682,7 @@ button { cursor: pointer; }
   .faq-layout, .content-grid, .consultation-layout { grid-template-columns: 1fr; gap: 45px; }
   .faq-layout .section-heading, .content-aside, .form-intro { position: static; }
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-list-card__image { min-height: 230px; }
   .footer-grid { grid-template-columns: 1.4fr repeat(2, 1fr); }
 }
 
@@ -736,7 +752,10 @@ button { cursor: pointer; }
   .inner-hero h1 { font-size: clamp(2.55rem, 12vw, 4rem); }
   .inner-hero__grid { grid-template-columns: 1fr; }
   .inner-hero__visual { min-height: 300px; }
-  .cards-grid, .sectors-list { grid-template-columns: 1fr; }
+  .cards-grid, .services-catalog-grid, .sectors-list { grid-template-columns: 1fr; }
+  .service-list-card__image { min-height: 245px; }
+  .service-list-card__body { padding: 24px 22px 26px; }
+  .service-list-card--visual h2 { min-height: 0; }
   .sector-detail { grid-template-columns: 125px 1fr; }
   .consultation-form { padding: 24px 18px; }
   .form-grid { grid-template-columns: 1fr; }
